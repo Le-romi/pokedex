@@ -1,9 +1,19 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <img alt="Vue logo" src="@/assets/pokeball.svg" height="50" width="50" />
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        <router-link to="/">Pokemon</router-link>
+      </a>
+    </div>
+  </div>
+</nav>
+<router-view />
+  
 </template>
 
 <style>
