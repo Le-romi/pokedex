@@ -69,6 +69,12 @@ export default{
     margin: 10px;
 }
 
+.card:hover{
+    width: 300px;
+    margin: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
 .type_list{
   display: flex;
   flex-direction: row;
