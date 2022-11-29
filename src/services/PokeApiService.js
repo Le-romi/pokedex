@@ -12,11 +12,10 @@ const apiClient = axios.create({
 
 export default {
   getPokemon() {
-    return apiClient.get('pokemon?limit=100000&offset=0')
+    return apiClient.get('pokemon?limit=151&offset=0')
   },
 
-  //t'es rendu la
-  getPokemonDescription(strId) {
-    return apiClient.get('/pokemon/', strId)
-  }
+  getPokemonDescription(stringId) {
+    return apiClient.get('pokemon/'+ stringId)
+  },
 }

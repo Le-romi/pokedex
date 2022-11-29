@@ -22,9 +22,6 @@ export default {
         PokeApiService.getPokemon()
         .then(response => {      
             this.pokemons = response.data['results']
-            console.clear()
-            console.log(this.pokemons)
-            console.log(Object.keys(this.pokemons))
         })
         .catch(error => {
             console.log(error)
