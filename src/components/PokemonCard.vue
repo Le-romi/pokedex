@@ -15,8 +15,9 @@
       </div>
     </div>
     <div class="content">
-      <ul>
-        <li v-for="type in this.desc.types" :key="type.type.name">{{type.type.name}}</li>
+      <p>Weight of the pokémon - {{this.weight}} kg</p>
+      <ul class="type_list">
+        <li v-for="t in this.types" :key="t.name" class="type">{{t.type.name}}</li>
       </ul>
     </div>
   </div>
@@ -40,7 +41,9 @@ export default{
         return{
             desc: null,
             img: null,
-            id: null
+            id: null,
+            types: null,
+            weight: null
         }
     },
     created(){
@@ -49,6 +52,8 @@ export default{
             this.desc = response.data
             this.img = this.desc.sprites.front_default
             this.id = this.desc.id
+            this.types = this.desc.types
+            this.weight = this.desc.weight
         })
         .catch(error => {
             console.log(error)
@@ -62,6 +67,17 @@ export default{
 .card{
     width: 300px;
     margin: 10px;
+}
+
+.type_list{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0px;
+}
+
+.type{
+  margin: 0px;
 }
 
 
