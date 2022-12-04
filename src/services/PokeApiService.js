@@ -15,7 +15,7 @@ export default {
     return apiClient.get('pokemon?limit=493&offset=0')
   },
 
-  getPokemonDescription(stringId) {
-    return apiClient.get('pokemon/'+ stringId)
+  getPokemonDescription(id) {
+    return apiClient.get('pokemon/'+ id)
   },
 }

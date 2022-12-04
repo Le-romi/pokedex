@@ -1,27 +1,24 @@
 <template>
-<div v-if="pokemon" class="card">
-  <div class="card-image">
-    <figure class="image is-128x128">
-      <img :src="this.img" alt="Placeholder image" height="50" width="50">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
+  <router-link :to="{name: 'PokemonDescription', params: {id: this.pokemon.url.substr(34, 3)}}">
+    <div v-if="pokemon" class="card">
+      <div class="card-image">
+        <figure class="image is-128x128">
+          <img :src="this.img" alt="Placeholder image" height="50" width="50">
+        </figure>
       </div>
-      <div class="media-content">
-        <p class="title is-6">{{pokemon.name}}</p>
-        <p class="title is-6"></p>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+          </div>
+          <div class="media-content">
+            <p class="title is-6">{{pokemon.name}}</p>
+            <p>{{this.pokemon.url.substr(34, 3)}}</p>
+          </div>
+        </div>
+        <div class="content"></div>
       </div>
     </div>
-    <div class="content">
-      <p>Weight of the pokémon - {{this.weight}} kg</p>
-      <ul class="type_list">
-        <li v-for="t in this.types" :key="t.name" class="type">{{t.type.name}}</li>
-      </ul>
-    </div>
-  </div>
-</div>
+  </router-link>
 </template>
 
 <script>
@@ -85,6 +82,5 @@ export default{
 .type{
   margin: 0px;
 }
-
 
 </style>
