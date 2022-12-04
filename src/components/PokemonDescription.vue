@@ -63,6 +63,7 @@ created(){
 
 .detail{
     display: flex;
+    margin: 100px;
     
 }
 
