@@ -1,6 +1,7 @@
 <template>
     <div class="description" v-if="desc">
         <div class="box box_informations">
+            <router-link :to="{name: 'PokemonView'}"><button class="button is-medium">Go back</button></router-link>
             <div class="pokemon_title">       
                 <figure class="image is-128x128">
                         <img :src="desc.sprites.back_default" alt="Placeholder image" height="50" width="50">
@@ -17,7 +18,7 @@
                     <img :src="desc.sprites.front_shiny" alt="Placeholder image" height="50" width="50">
                 </figure>    
             </div>      
-            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus, diam non venenatis malesuada, eros magna sodales orci, et bibendum arcu nisi sed sem. Phasellus nec tincidunt lacus. Nulla consequat justo viverra egestas semper. Vestibulum vestibulum, odio et eleifend iaculis, ante arcu ullamcorper dolor, id tincidunt est massa sit amet metus. Sed gravida, mauris sed placerat pretium, ipsum lorem pulvinar est, eget rutrum felis ante a velit. Nam sed magna metus. Sed tincidunt porta eros. Etiam gravida turpis dolor, in tristique est elementum eget. Cras posuere facilisis augue, at viverra augue. </div>
+            <div>{{desc.id}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus, diam non venenatis malesuada, eros magna sodales orci, et bibendum arcu nisi sed sem. Phasellus nec tincidunt lacus. Nulla consequat justo viverra egestas semper. Vestibulum vestibulum, odio et eleifend iaculis, ante arcu ullamcorper dolor, id tincidunt est massa sit amet metus. Sed gravida, mauris sed placerat pretium, ipsum lorem pulvinar est, eget rutrum felis ante a velit. Nam sed magna metus. Sed tincidunt porta eros. Etiam gravida turpis dolor, in tristique est elementum eget. Cras posuere facilisis augue, at viverra augue. </div>
             <div class="pokemon_data">
                 <div class="box_detail">
                     <table class="table">
@@ -36,7 +37,7 @@
                         <li v-for="t in desc.types" :key="t.type.name"><figure class="image is-128x128"><img :src="require(`@/assets/types/${t.type.name}.png`)"/></figure></li>
                     </ul>
                 </div>
-                <img class="has-ratio" width="800" height="400" src="@/assets/regions/kanto.png"/>
+                <img class="has-ratio" width="800" height="400" :src="getRegion(desc.id)"/>
             </div>
         </div>
     </div>
@@ -51,6 +52,19 @@ export default{
             desc: null
         }
     },
+    methods: {
+        getRegion(id){
+            if(id >= 0  && id <= 151){
+                return require(`@/assets/regions/kanto.png`);
+            } else if(id >= 152  && id <= 251){
+                return require(`@/assets/regions/johto.jpg`);
+            } else if(id >= 252  && id <= 386){
+                return require(`@/assets/regions/hoenn.png`);
+            } else {
+                return require(`@/assets/regions/sinnoh.png`);
+            }
+        }
+    },
     created(){
             PokeApiService.getPokemonDescription(this.id)
             .then(response => {      
@@ -60,17 +74,6 @@ export default{
                 console.log(error)
             })
         },
-        getRegion(id){
-            if(id >= 0  && id <= 151){
-                return require(`@/assets/regions/kanto.png`);
-            } else if(id >= 152  && id <= 251){
-                return "@/assets/regions/johto.png";
-            } else if(id >= 252  && id <= 386){
-                return "@/assets/regions/hoenn.png";
-            } else {
-                return "@/assets/regions/sinnoh.png";
-            }
-        }
 }
 
 </script>
@@ -115,6 +118,8 @@ export default{
     font-weight: bold;
     font-size: 200%;
     margin: 10px;
+    display: inline;
+    vertical-align: middle !important;
 }
 
 </style>

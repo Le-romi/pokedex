@@ -12,7 +12,6 @@
           </div>
           <div class="media-content">
             <p class="title is-6">{{pokemon.name}}</p>
-            <p>{{this.pokemon.url.substr(34, 3)}}</p>
           </div>
         </div>
         <div class="content"></div>
